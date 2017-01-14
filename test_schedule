@@ -1,0 +1,70 @@
+// Find available time between provider client for an appointment:
+var timekit = require('timekit');
+timekit.configure({ app: 'demo' });
+timekit.setUser(
+  'doc.brown@timekit.io',
+  GET /accounts/google/signup
+); 
+timekit.findTime({
+  emails: [
+    'doc.brown@timekit.io',
+    'samIyam@timekit.io'
+  ],
+GET /accounts/sync
+}).then(function(result) { 
+  console.log(result);
+});
+
+
+CLIENT CHOOSES AVAILABILITY
+
+// Query filters example
+"filters": {
+  "or": [
+    { 
+      "specific_day_and_time": {
+        "day": "Tuesday",
+        "start": 15,
+        "end": 17,
+        "timezone": "US/Central"
+      }
+    },
+    {
+      "specific_day_and_time": {
+        "day": "Friday",
+        "start": 13,
+        "end": 16,
+        "timezone": "US/Central"
+      }
+    }
+  ],
+  "and": [
+    {
+      "daytime": {
+        "timezone": "US/Central"
+      }
+    }
+  ]
+}
+
+THE CONFIRMATION FROM PROVIDER
+
+
+// Response example
+// [POST] /findtime
+{
+  "data": [
+    {
+      "start": "2015-07-17 13:00:00",
+      "end": "2015-07-17 14:00:00"
+    },
+    {
+      "start": "2015-07-24 13:00:00",
+      "end": "2015-07-24 14:00:00"
+    },
+    {
+      "start": "2015-07-31 13:00:00",
+      "end": "2015-07-31 14:00:00"
+    }
+  ]
+}
